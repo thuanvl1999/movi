@@ -59,14 +59,7 @@
                                 x-show.transition="true">
 
                             <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
-                                <li class="mr-3">
-                                    <a
-                                            class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-                                            href="/movies"
-                                            @click="isOpen = false">
-                                        Home
-                                    </a>
-                                </li>
+                             
 
                                 <li class="mr-3">
                                     <a
@@ -116,7 +109,9 @@
                 </header>
             {% endblock %}
 
-            {% block body %}{% endblock %}
+            {% block body %}
+
+            {% endblock %}
 
             {% block footer %}
                 <footer class="bg-gray-600 py-6 mt-20">

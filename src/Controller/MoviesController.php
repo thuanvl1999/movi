@@ -21,6 +21,7 @@ class MoviesController extends AbstractController
     {
         $this->em = $em;
         $this->movieRepository = $movieRepository;
+        
     }
 
     #[Route('/movies', name: 'movies')]
@@ -148,13 +149,5 @@ class MoviesController extends AbstractController
             return $this->redirectToRoute('movies');
         }
     }
-    $qb = $entity_manager->createQueryBuilder();
-    $qb
-    ->select('movie')
-    ->from(Movie::class, 'movie')
-    ->leftJoin('movie.actor', 'actor')
-    ->addSelect('actor')
-;
-
-$movies = $qb->getQuery()->getResult();
+    
 }

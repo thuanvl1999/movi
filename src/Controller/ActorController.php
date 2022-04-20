@@ -108,8 +108,8 @@ class ActorController extends AbstractController
                 }
             } else {
                 $actor->setName($form->get('name')->getData());
-                $actor->setBirth($form->get('birth')->getData());
-                $actor->setDescription($form->get('description')->getData());
+                $actor->setBirth($form->get('Birth')->getData());
+                $actor->setDescription($form->get('Description')->getData());
 
                 $this->em->flush();
                 return $this->redirectToRoute('actor');

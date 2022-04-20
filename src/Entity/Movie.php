@@ -54,9 +54,17 @@ class Movie
      */
     private $userId;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Link;
+
+   
+
     public function __construct()
     {
         $this->actors = new ArrayCollection();
+        $this->Actors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -144,6 +152,18 @@ class Movie
     public function setUserId(int $userId): self
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->Link;
+    }
+
+    public function setLink(string $Link): self
+    {
+        $this->Link = $Link;
 
         return $this;
     }

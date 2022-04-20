@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 class MovieFormType extends AbstractType
 {
@@ -48,10 +49,20 @@ class MovieFormType extends AbstractType
                 'required' => false,
                 'mapped' => false
             ))
-            ->add('actors', EntityType::class, ['class' => Actor::class,
+            ->add('actor', EntityType::class, ['class' => Actor::class,
             'choice_label' => 'name',
             'mapped' => false
         ])
+            ->add('Link', UrlType::class ,[
+                'default_protocol' => 'https',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'https://domain.com',
+                    'pattern' => '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$'
+                ]
+            ])
+
         ;
     }
 

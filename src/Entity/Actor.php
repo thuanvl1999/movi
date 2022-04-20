@@ -6,7 +6,7 @@ use App\Repository\ActorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ActorRepository::class)
  */
@@ -21,6 +21,8 @@ class Actor
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      */
     private $name;
 
@@ -31,16 +33,21 @@ class Actor
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $Birth;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
+     
      */
     private $Nationality;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $Description;
 
@@ -49,9 +56,15 @@ class Actor
      */
     private $imagePath;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Movie::class, mappedBy="Actors")
+     */
+    private $movie;
+
     public function __construct()
     {
         $this->movies = new ArrayCollection();
+        $this->movie = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -64,7 +77,7 @@ class Actor
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -103,7 +116,7 @@ class Actor
         return $this->Birth;
     }
 
-    public function setBirth(int $Birth): self
+    public function setBirth(?int $Birth): self
     {
         $this->Birth = $Birth;
 
@@ -115,7 +128,7 @@ class Actor
         return $this->Nationality;
     }
 
-    public function setNationality(string $Nationality): self
+    public function setNationality(?string $Nationality): self
     {
         $this->Nationality = $Nationality;
 
@@ -139,10 +152,18 @@ class Actor
         return $this->imagePath;
     }
 
-    public function setImagePath(string $imagePath): self
+    public function setImagePath(?string $imagePath): self
     {
         $this->imagePath = $imagePath;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Movie>
+     */
+    public function getMovie(): Collection
+    {
+        return $this->movie;
     }
 }
