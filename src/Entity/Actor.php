@@ -44,6 +44,11 @@ class Actor
      */
     private $Description;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imagePath;
+
     public function __construct()
     {
         $this->movies = new ArrayCollection();
@@ -125,6 +130,18 @@ class Actor
     public function setDescription(?string $Description): self
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(string $imagePath): self
+    {
+        $this->imagePath = $imagePath;
 
         return $this;
     }

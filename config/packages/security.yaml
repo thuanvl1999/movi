@@ -38,6 +38,8 @@ security:
          - { path: ^/movies/create, roles: ROLE_USER }
          - { path: ^/movies/edit, roles: ROLE_USER }
          - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/actor/create, roles: ROLE_USER }
+         - { path: ^/actor/edit, roles: ROLE_USER }
 
 when@test:
     security:
