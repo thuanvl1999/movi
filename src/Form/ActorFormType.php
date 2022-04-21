@@ -54,10 +54,7 @@ class ActorFormType extends AbstractType
                 'required' => false,
                 'mapped' => false
             ))
-            ->add('movies',EntityType::class, ['class' => Movie::class,
-            'choice_label' => 'title',
-            'mapped' => false
-        ])
+      
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void

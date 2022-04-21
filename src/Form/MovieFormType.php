@@ -49,10 +49,8 @@ class MovieFormType extends AbstractType
                 'required' => false,
                 'mapped' => false
             ))
-            ->add('actor', EntityType::class, ['class' => Actor::class,
-            'choice_label' => 'name',
-            'mapped' => false
-        ])
+       
+       
             ->add('Link', UrlType::class ,[
                 'default_protocol' => 'https',
                 'required' => false,
