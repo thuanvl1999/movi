@@ -56,7 +56,7 @@ class ActorController extends AbstractController
                 } catch (FileException $e) {
                     return new Response($e->getMessage());
                 }
-                $newActor->setUserId($this->getUser()->getId());
+              
                 $newActor->setImagePath('/uploads/' . $newFileName);
             }
 
